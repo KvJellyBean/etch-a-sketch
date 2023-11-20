@@ -85,7 +85,7 @@ button {
     border: 2px solid var(--text);
     border-radius: 8px;
     background-color: var(--accent);
-    padding: 1em;
+    padding: .5em;
     width: 10em;
 }
 
@@ -95,4 +95,12 @@ button:hover {
     color: var(--secondary);
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.container {
+    margin: .5em 0;
+    width: 600px;
+    border: 2px solid var(--background);
+    background-color: var(--text);
+    color: red;
 }
