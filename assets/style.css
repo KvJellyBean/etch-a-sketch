@@ -97,10 +97,23 @@ button:hover {
     cursor: pointer;
 }
 
-.container {
-    margin: .5em 0;
-    width: 600px;
+.wrapper {
+    padding: .5em;
     border: 2px solid var(--background);
+    border-radius: 10px;
+    background-color: var(--secondary);
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.container {
     background-color: var(--text);
-    color: red;
+    width: 600px;
+    height: 600px;
+
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
 }
