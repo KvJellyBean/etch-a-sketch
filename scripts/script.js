@@ -1,4 +1,5 @@
-const gridRange = document.querySelector('.controller #grid');
+const gridRange = document.querySelector('.controller #gridRange');
+let gridSizeText = document.querySelector('label#gridText')
 const workstation = document.querySelector('.container');
 
 function createGrid(gridSize) {
@@ -12,5 +13,6 @@ function createGrid(gridSize) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const rangeValue = gridRange.value;
+    gridSizeText.innerText = `Grid Size: ${rangeValue} x ${rangeValue}`;
     createGrid(rangeValue);
 });
