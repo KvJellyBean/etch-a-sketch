@@ -1,6 +1,7 @@
 const gridRange = document.querySelector('.controller #gridRange');
 let gridSizeText = document.querySelector('label#gridText')
 const workstation = document.querySelector('.container');
+const colorPicker = document.querySelector('#colorPicker');
 
 function createGrid(gridSize) {
     workstation.innerHTML = '';
@@ -32,4 +33,9 @@ gridRange.addEventListener('change', () => {
     gridSizeText.innerText = `Grid Size: ${rangeValue} x ${rangeValue}`;
 
     createGrid(rangeValue);
+});
+
+// Event handler to giving color when hovering in the grid container/workstation
+workstation.addEventListener('mouseover', (e) => {
+    e.target.style.backgroundColor = colorPicker.value;
 });
