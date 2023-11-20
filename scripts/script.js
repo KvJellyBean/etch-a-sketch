@@ -2,6 +2,7 @@ const gridRange = document.querySelector('.controller #gridRange');
 let gridSizeText = document.querySelector('label#gridText')
 const workstation = document.querySelector('.container');
 const colorPicker = document.querySelector('#colorPicker');
+const clearButton = document.querySelector('#clearButton');
 
 function createGrid(gridSize) {
     workstation.innerHTML = '';
@@ -38,4 +39,12 @@ gridRange.addEventListener('change', () => {
 // Event handler to giving color when hovering in the grid container/workstation
 workstation.addEventListener('mouseover', (e) => {
     e.target.style.backgroundColor = colorPicker.value;
+});
+
+// Event handler for button "Clear Workstation"
+clearButton.addEventListener('click', () => {
+    /*Convert object type of workstation's children into array, and loop them to remove style attribute*/
+    Array.from(workstation.childNodes).forEach(item => {
+        item.removeAttribute("style");
+    })
 });
