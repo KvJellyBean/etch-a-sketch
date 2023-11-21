@@ -4,6 +4,8 @@ const workstation = document.querySelector('.container');
 const colorPicker = document.querySelector('#colorPicker');
 const colorButton = document.querySelector('#colorButton');
 const rainbowButton = document.querySelector('#rainbowButton');
+const brightenButton = document.querySelector('#brightenButton');
+const darkenButton = document.querySelector('#darkenButton');
 const eraserButton = document.querySelector('#eraserButton');
 const clearButton = document.querySelector('#clearButton');
 const gridRange = document.querySelector('.controller #gridRange');
@@ -14,6 +16,7 @@ function createGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             const div = document.createElement('div');
+            div.style.backgroundColor = '#F4F1EB';
             workstation.append(div);
         }
     }
@@ -36,17 +39,38 @@ workstation.addEventListener('mouseover', (e) => {
     if (colorButton.classList.contains('active')) {
         e.target.style.backgroundColor = colorPicker.value;
     }
+    // Coloring with Rainbow Brush
     else if (rainbowButton.classList.contains('active')) {
         const r = Math.round(Math.random() * 255);
         const g = Math.round(Math.random() * 255);
         const b = Math.round(Math.random() * 255);
         e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
+    else if (brightenButton.classList.contains('active')) {
+        const inputColor = e.target.style.backgroundColor;
+        let r = parseInt(inputColor.split(',')[0].slice(4));
+        let g = parseInt(inputColor.split(',')[1]);
+        let b = parseInt(inputColor.split(',')[2]);
+        r += 15;
+        g += 15;
+        b += 15;
+        e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+    else if (darkenButton.classList.contains('active')) {
+        const inputColor = e.target.style.backgroundColor;
+        let r = parseInt(inputColor.split(',')[0].slice(4));
+        let g = parseInt(inputColor.split(',')[1]);
+        let b = parseInt(inputColor.split(',')[2]);
+        r -= 15;
+        g -= 15;
+        b -= 15;
+        e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+
     // Use an eraser
     else if (eraserButton.classList.contains('active')) {
         e.target.removeAttribute('style');
     }
-    // other condition
 });
 
 // Event handler for giving the button an 'active' class when it is active
@@ -65,7 +89,7 @@ controller.addEventListener('click', (e) => {
 clearButton.addEventListener('click', () => {
     /*Convert object type of workstation's children into array, and loop them to remove style attribute*/
     Array.from(workstation.children).forEach(item => {
-        item.removeAttribute('style');
+        item.style.backgroundColor = '#F4F1EB';
     })
 });
 
