@@ -1,8 +1,9 @@
-const controller = document.querySelector('.controller')
+const controller = document.querySelector('.controller');
 const workstation = document.querySelector('.container');
 
 const colorPicker = document.querySelector('#colorPicker');
 const colorButton = document.querySelector('#colorButton');
+const eraserButton = document.querySelector('#eraserButton');
 const clearButton = document.querySelector('#clearButton');
 const gridRange = document.querySelector('.controller #gridRange');
 let gridSizeText = document.querySelector('label#gridText');
@@ -28,10 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
     createGrid(rangeValue);
 });
 
-// Event handler to giving color when hovering in the grid container/workstation
+// Event handler when hovering in the grid container/workstation
 workstation.addEventListener('mouseover', (e) => {
+    // Coloring with Color brush
     if (colorButton.classList.contains('active')) {
         e.target.style.backgroundColor = colorPicker.value;
+    }
+    // Use an eraser
+    else if (eraserButton.classList.contains('active')) {
+        e.target.removeAttribute('style');
     }
     // other condition
 });
@@ -52,7 +58,7 @@ controller.addEventListener('click', (e) => {
 clearButton.addEventListener('click', () => {
     /*Convert object type of workstation's children into array, and loop them to remove style attribute*/
     Array.from(workstation.children).forEach(item => {
-        item.removeAttribute("style");
+        item.removeAttribute('style');
     })
 });
 
