@@ -89,7 +89,8 @@ button {
     width: 10em;
 }
 
-button:hover {
+button:hover,
+.active {
     border: 2px solid var(--text);
     background-color: var(--text);
     color: var(--secondary);
