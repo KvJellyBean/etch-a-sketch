@@ -46,6 +46,7 @@ workstation.addEventListener('mouseover', (e) => {
         const b = Math.round(Math.random() * 255);
         e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
+    // Brighten button functionality - take the rgb and reduce them
     else if (brightenButton.classList.contains('active')) {
         const inputColor = e.target.style.backgroundColor;
         let r = parseInt(inputColor.split(',')[0].slice(4));
@@ -56,6 +57,7 @@ workstation.addEventListener('mouseover', (e) => {
         b += 15;
         e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
+    // Darken button functionality - take the rgb and reduce them
     else if (darkenButton.classList.contains('active')) {
         const inputColor = e.target.style.backgroundColor;
         let r = parseInt(inputColor.split(',')[0].slice(4));
@@ -66,7 +68,6 @@ workstation.addEventListener('mouseover', (e) => {
         b -= 15;
         e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
-
     // Use an eraser
     else if (eraserButton.classList.contains('active')) {
         e.target.removeAttribute('style');
