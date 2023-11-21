@@ -3,6 +3,7 @@ const workstation = document.querySelector('.container');
 
 const colorPicker = document.querySelector('#colorPicker');
 const colorButton = document.querySelector('#colorButton');
+const rainbowButton = document.querySelector('#rainbowButton');
 const eraserButton = document.querySelector('#eraserButton');
 const clearButton = document.querySelector('#clearButton');
 const gridRange = document.querySelector('.controller #gridRange');
@@ -34,6 +35,12 @@ workstation.addEventListener('mouseover', (e) => {
     // Coloring with Color brush
     if (colorButton.classList.contains('active')) {
         e.target.style.backgroundColor = colorPicker.value;
+    }
+    else if (rainbowButton.classList.contains('active')) {
+        const r = Math.round(Math.random() * 255);
+        const g = Math.round(Math.random() * 255);
+        const b = Math.round(Math.random() * 255);
+        e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
     }
     // Use an eraser
     else if (eraserButton.classList.contains('active')) {
